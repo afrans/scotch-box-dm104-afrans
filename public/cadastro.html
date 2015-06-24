@@ -36,7 +36,7 @@
 				<div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
 					<ul class="nav navbar-nav">
 						<li><a href="index.html">Home</a></li>
-						<li class="active"><a href="#">Cadastro</a></li>
+						<li class="active"><a href="#">Sig up</a></li>
 						<li><a href="avaliacao.html">Avaliação</a></li>
 						<li><a href="relatorio.html">Relatórios</a></li>
 					</ul>
@@ -44,8 +44,38 @@
 			</div>
 		</nav>
 		
+		<form >
+	    <fieldset>
+		    <label for="username">
+			    Username
+			    <input id="user" type="text" name="user"/>
+		    </label>
+
+            <label for="email">
+			    Email
+			    <input id="email" type="text" name="email"/>
+    		</label>
+
+            <label for="email">
+			    Age
+			    <input id="age" type="text" name="age"/>
+    		</label>
 		
-		<script src="js/jquery-2.1.4.min.js"></script>
+	    	<label for="secretword">
+		    	Password
+			    <input id="secretword" type="password" name="passwd"/>
+    		</label>
+		
+    		<input type="submit" value="Sign up" />
+	    </fieldset>
+        </form>
+    
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="js/GuestService.js"></script>
+        <script src="js/GuestController.js"></script>
+		
+		<!-- <script src="js/jquery-2.1.4.min.js"></script> -->
 		<script src="js/bootstrap.min.js"></script>
+		
 	</body>
 </html>
