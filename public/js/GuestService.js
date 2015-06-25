@@ -9,8 +9,9 @@ var GuestService = {
 			url: 'api/guest',
 			data: JSON.stringify(guest),
 			success: function(addedGuest) {
-				console.log('Guest created!');
+				console.log('Guest created!' + guest.id + guest.user);
 				callback(addedGuest);
+                //console.log('Guest created!' + addedGuest.user);
 			},
 			error: function() {
 				console.log('Error to add guest ' + guest.user);

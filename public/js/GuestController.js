@@ -21,15 +21,15 @@ var GuestController = {
 		//GuestController.setFocus();
 	},
 	
-	setFocus: function() {
-		var inputName = document.getElementById('name');
-		inputName.focus();
-	},
+	//setFocus: function() {
+		//var inputName = document.getElementById('user');
+		//inputName.focus();
+	//},
 	
 	clearForm: function() {
 		var form = document.querySelector('form');
 		form.reset();
-		GuestController.setFocus();
+		//GuestController.setFocus();
 	},
 	
 	addGuest: function(form) {

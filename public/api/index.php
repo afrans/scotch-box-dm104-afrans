@@ -8,11 +8,11 @@ $app->get('/', function() {
 });
 
 $app->get('/guests', function() use ( $app ) {
-	$db = getDB();
 	
-	$guests = array();
-	foreach($db->guests() as $guest) {
-		$guests[] = array(
+	$db = getDB();
+	$user = array();
+	foreach($db->user() as $guest) {
+		$user[] = array(
 			'id' => $guest['id'],
 			'user' => $guest['user'],
 			'email' => $guest['email'],
@@ -22,18 +22,14 @@ $app->get('/guests', function() use ( $app ) {
 	}
 	
 	$app->response()->header('Content-Type', 'application/json');
-	echo json_encode($guests);
+	echo json_encode($user);
 });
 
 $app->post('/guest', function () use ( $app ) {
     
-//    echo "recebeu post";
-    
 	$db = getDB();
-	
 	$guestToAdd = json_decode($app->request->getBody(), true);
 	$guest = $db->user->insert($guestToAdd);
-	
 	$app->response->header('Content-Type', 'application/json');
 	echo json_encode($guest);
 });
@@ -43,8 +39,8 @@ $app->delete('/guest/:id', function($id) use ( $app ) {
 });
 
 function getConnection() {
-	$dbhost = getenv('localhost');
-	$dbuser = getenv('root');
+	$dbhost = 'localhost';
+	$dbuser = 'root';
 	$dbpass = 'root';
 	$dbname = 'dm104';
 	$pdo = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
