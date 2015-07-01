@@ -21,28 +21,11 @@
 		<div id="topo_da_pagina" class="page-header">
 			<h1 class="text-center">Santa Rita Store</h1>
 		</div>
-		
-		<nav class="navbar navbar-default">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">Menu</a>
-				</div>
-				<div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Home</a></li>
-						<li><a href="cadastro.html">Sig up</a></li>
-						<li><a href="avaliacao.html">My Orders</a></li>
-						<li><a href="relatorio.html">Report</a></li>
-					</ul>
-				</div><!--/.nav-collapse -->
-			</div>
-		</nav>
+		<?php
+			include 'pages/menu.php';
+			$menu = new Menu();
+			$menu->buildMenu();
+		?>
 		
 		<div id="characters"></div>
 
