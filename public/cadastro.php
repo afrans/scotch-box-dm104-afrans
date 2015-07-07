@@ -8,8 +8,7 @@
 		
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/estilo.css">
-		
-		<link rel="stylesheet" href="css/main.css" />
+		<!-- <link rel="stylesheet" href="css/main.css" /> -->
         <!-- <link rel="stylesheet" href="css/t1/style.css" title="Theme 1" /> -->
         <!-- <link rel="alternate stylesheet" href="css/t2/style.css" title="Theme 2" /> -->
 		
@@ -60,7 +59,7 @@
 			    <input id="email" type="text" name="email"/>
     		</label>
 
-            <label for="email">
+            <label for="age">
 			    Age
 			    <input id="age" type="text" name="age"/>
     		</label>
@@ -75,11 +74,11 @@
         </form>
     
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="js/GuestService.js"></script>
-        <script src="js/GuestController.js"></script>
+        <script src="js/service/GuestService.js"></script>
+        <script src="js/controller/GuestController.js"></script>
 		
 		<!-- <script src="js/jquery-2.1.4.min.js"></script> -->
-		<script src="js/bootstrap.min.js"></script>
+		<!-- <script src="js/bootstrap.min.js"></script> -->
 		
 	</body>
 </html>
