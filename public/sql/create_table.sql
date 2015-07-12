@@ -23,8 +23,7 @@ create table produto (
 	nome varchar(45) not null,
 	descricao varchar (150) not null,
 	url_foto varchar(200) not null,
-	quantidade integer not null,
-	peso double precision not null,  
+	quantidade integer not null,  
 	preco double precision not null,
 	constraint mar_fk foreign key (marca_id)
 	references marca (id)
