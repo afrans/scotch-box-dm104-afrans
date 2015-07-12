@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Santa Rita Store</title>
+		<title>Apple Store</title>
 		
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/estilo.css">
@@ -19,7 +19,7 @@
 	<body>
 		
 		<div id="topo_da_pagina" class="page-header">
-			<h1 class="text-center">Santa Rita Store</h1>
+			<h1 class="text-center">Smartphone Store</h1>
 		</div>
 		<?php
 			include 'pages/menu.php';

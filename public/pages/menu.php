@@ -18,9 +18,11 @@ class Menu {
 					'<div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">'.
 						'<ul class="nav navbar-nav">'.
 							'<li class="active"><a href="#">Home</a></li>'.
-							'<li><a href="cadastro.php">Sig up</a></li>'.
-							'<li><a href="#">My Orders</a></li>'.
-							'<li><a href="#">Report</a></li>'.
+							'<li><a href="#">Apple</a></li>'.
+							'<li><a href="#">Samsung</a></li>'.
+							'<li><a href="#">LG</a></li>'.
+							'<li><a href="#">Microsoft</a></li>'.
+							'<li><a href="#">Entrar</a></li>'.
 						'</ul>'.
 					'</div>'.
 				'</div>'.
