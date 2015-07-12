@@ -4,9 +4,9 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Apple Store</title>
+		<title>Smartphone Store</title>
 		
-		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/estilo.css">
 		
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -27,9 +27,9 @@
 			$menu->buildMenu();
 		?>
 		
-		<div id="characters"></div>
+		<div id="content"></div>
 
-		<script src="js/bootstrap.min.js"></script>
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	</body>
 </html>
