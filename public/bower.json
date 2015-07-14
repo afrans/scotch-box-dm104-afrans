@@ -1,8 +1,8 @@
 {
-  "name": "marvel",
+  "name": "SmartphoneStore",
   "version": "0.1.0",
   "homepage": "https://github.com/afrans/scotch-box-dm104-afrans",
-  "description": "An project of Marvel API with PHP",
+  "description": "A Website to customer buy a smartphone",
   "main": "index.html",
   "keywords": [
     "rest",
@@ -11,7 +11,8 @@
     "slim"
   ],
   "authors": [
-    "Anderson"
+    "Anderson",
+	"Rodrigo Faria"
   ],
   "license": "MIT",
   "private": true,
@@ -25,6 +26,7 @@
   "dependencies": {
     "jquery": "~2.1.4",
     "pure": "~0.6.0",
-	"bootstrap": "3.3.5"
+	"bootstrap": "3.3.5",
+	"angular": "1.4.2"
   }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" ng-app="smartphoneStore">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,8 @@
 		
 		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/estilo.css">
+		<!-- <link rel="icon" type="image/png" href="http://192.168.33.10/favicon.ico"> -->
+		<link rel="icon" href="favicon.ico">
 		
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,9 +29,20 @@
 			$menu->buildMenu();
 		?>
 		
-		<div id="content"></div>
+		<div id="content" ng-controller="ProductController" ng-init="init()">
+			<div ng-repeat="product in productList" class="col-md-4 col-sm-6 col-xs-12 productInfo">
+				<img ng-src="{{product.url_image}}" alt="image" class="img-responsive">
+				<span>{{product.name}}</span>
+				<span>{{product.price}}</span>
+			</div>
+			
+		</div>
 
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
 		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="js/index.js"></script>
+		<script src="js/service/ProductService.js"></script>
+		<script src="js/controller/ProductController.js"></script>
 	</body>
 </html>
