@@ -1,5 +1,4 @@
 
-
 #content {
 	max-width: 1100px;
 	margin: 25px auto;
@@ -7,9 +6,4 @@
 
 div.productInfo img {
 	cursor: pointer;
-	max-width: 150px;
-}
-
-span.textCart {
-	margin-right: 3px;
 }

@@ -17,14 +17,14 @@ class Menu {
 					'</div>'.
 					'<div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">'.
 						'<ul class="nav navbar-nav">'.
-							'<li><a href="?">Home</a></li>'.
-							'<li><a href="?m=1">Apple</a></li>'.
-							'<li><a href="?m=2">Samsung</a></li>'.
-							'<li><a href="?m=3">LG</a></li>'.
-							'<li><a href="?m=4">Microsoft</a></li>'.
+							'<li class="active"><a href="#">Home</a></li>'.
+							'<li><a href="#">Apple</a></li>'.
+							'<li><a href="#">Samsung</a></li>'.
+							'<li><a href="#">LG</a></li>'.
+							'<li><a href="#">Microsoft</a></li>'.
 						'</ul>'.
 						'<ul class="nav navbar-nav navbar-right">'.
-						'<li><a href="#"><span class="glyphicon glyphicon-shopping-cart textCart"></span>{{ cartMessage }}</a></li>'.
+							'<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>'.
 							'<li><a href="#">Entrar</a></li>'.
 						'</ul>'.
 					'</div>'.
