@@ -11,7 +11,7 @@ $app->get('/guests', function() use ( $app ) {
 	
 	$db = getDB();
 	$user = array();
-	foreach($db->user() as $guest) {
+	/*foreach($db->user() as $guest) {
 		$user[] = array(
 			'id' => $guest['id'],
 			'user' => $guest['user'],
@@ -19,10 +19,30 @@ $app->get('/guests', function() use ( $app ) {
             'age' => $guest['age'],
 			'passwd' => $guest['passwd']            
 		);
+	}*/
+	
+	
+$json_result = '[';
+$first_item = True; 
+
+foreach ($db->produto() as $produto) {
+    
+	if ($first_item) {
+		$first_item = False;
+	} else {
+		$json_result .= ',';
 	}
 	
+	$json_result .= '{name: "'.$produto["nome"];
+	$json_result .= '", marca: "'.$produto->marca["nome"];
+	$json_result .= '"}';
+
+}
+
+$json_result .= ']';
+	
 	$app->response()->header('Content-Type', 'application/json');
-	echo json_encode($user);
+	echo json_encode($json_result);
 });
 
 $app->post('/guest', function () use ( $app ) {
