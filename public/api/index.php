@@ -7,42 +7,35 @@ $app->get('/', function() {
 	echo "Welcome to Guest API";
 });
 
-$app->get('/guests', function() use ( $app ) {
-	
-	$db = getDB();
-	$user = array();
-	/*foreach($db->user() as $guest) {
-		$user[] = array(
-			'id' => $guest['id'],
-			'user' => $guest['user'],
-			'email' => $guest['email'],
-            'age' => $guest['age'],
-			'passwd' => $guest['passwd']            
-		);
-	}*/
-	
-	
-$json_result = '[';
-$first_item = True; 
+$app->get('/all_products', function() use ( $app ) {
 
-foreach ($db->produto() as $produto) {
+    $db = getDB();
+    $json_result = '[';
+    $first_item = True; 
+
+    foreach ($db->produto() as $produto) {
     
-	if ($first_item) {
-		$first_item = False;
-	} else {
-		$json_result .= ',';
-	}
-	
-	$json_result .= '{name: "'.$produto["nome"];
-	$json_result .= '", marca: "'.$produto->marca["nome"];
-	$json_result .= '"}';
+        if ($first_item) {
+        $first_item = False;
+        } else {
+        $json_result .= ',';
+        }
+ 
+        $json_result .= '{name: "'.$produto["nome"];
+        $json_result .= '", marca: "'.$produto->marca["nome"];
+        $json_result .= '", descricao: "'.$produto["descricao"];
+        $json_result .= '", url_foto: "'.$produto["url_foto"];
+        $json_result .= '", quantidade: "'.$produto["quantidade"];
+        $json_result .= '", preco: "'.$produto["preco"];
+        $json_result .= '"}';
 
-}
+    }
 
-$json_result .= ']';
-	
+    $json_result .= ']';
+
 	$app->response()->header('Content-Type', 'application/json');
 	echo json_encode($json_result);
+	
 });
 
 $app->post('/guest', function () use ( $app ) {
