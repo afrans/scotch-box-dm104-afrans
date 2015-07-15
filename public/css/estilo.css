@@ -4,6 +4,16 @@
 	margin: 25px auto;
 }
 
+div.productInfo {
+	margin-top: 15px;
+	min-height: 300px;
+}
+
 div.productInfo img {
 	cursor: pointer;
+	max-width: 150px;
 }
+
+span.textCart {
+	margin-right: 3px;
+} 

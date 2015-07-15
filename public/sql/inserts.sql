@@ -6,8 +6,8 @@ insert into marca(id, nome) values
 (4, 'Nokia');
 
 insert into produto(id, nome, marca_id,	descricao, url_foto, quantidade, preco) values
-(1, 'Smartphone Nokia Lumia 630', 4, 'Smartphone Nokia Lumia 630 Preto Dual Sim, Tv Digital ,Windows Phone 8.1, Tela 4.5, QuadCore 1.2GHz, Câm. 5MP, WiFi, Bluetooth e A-Gps -Tim',
-'http://www.pontofrio-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=46900634', 13, 369.00),
+(1, 'Smartphone Nokia Lumia 630', 4, 'Nokia Lumia 630 Branco, Dual Chip, TV Digital, Processador Quad Core 1.2GHz, Windows Phone 8.1, Tela de 4,5, Câmera de 5MP, Memória 8GB',
+'http://static.wmobjects.com.br/imgres/arquivos/ids/3216264-1000-1000/nokia-lumia-630-branco-dual-chip-tv-digital-processador-quad-core-1-2ghz-windows-phone-8-1-tela-de-45--camera-de-5mp-memoria-8gb.jpg', 13, 378.00),
 (2, 'Smartphone Nokia Lumia 630', 4, 'Smartphone Nokia Lumia 630 Windows 8.1 Tela 4.5 8GB 3G Wi Fi Câmera 5MP GPS TV Digital - Preto',
 'http://iacom.s8.com.br/produtos/01/00/item/119597/7/119597781_1GG.png', 2, 467.10),
 (3, 'Smartphone Nokia Lumia 830', 4, 'Smartphone Nokia Lumia 830 Desbloqueado Windows 8.1 Tela 5 16GB Wi-Fi Câmera 10MP GPS - Preto', 
@@ -47,4 +47,22 @@ insert into produto(id, nome, marca_id,	descricao, url_foto, quantidade, preco) 
 (18, 'Smartphone Nokia Lumia 1520', 4, 'Com uma tela Full HD supersensível de 6 polegadas que permite que você veja tudo mesmo na luz do sol',
 'http://i.webapps.microsoft.com/r/image/view/-/4216452/respXLFixed/2/-/1520-white-png.png', 14, 1345.99),
 (19, 'Smartphone Nokia Lumia 735', 4, 'Apresentamos o Lumia 735. Desenvolvido para os melhores selfies', 
-'http://i.webapps.microsoft.com/r/image/view/-/4210984/respXLFixed/2/-/735-black-png.png', 3, 736.45);
+'http://i.webapps.microsoft.com/r/image/view/-/4210984/respXLFixed/2/-/735-black-png.png', 3, 736.45),
+(20, 'Smartphone LG L Prime D337', 3, 'Smartphone LG L Prime D337 Preto/Titânio, Dual Chip, TV Digital, Android 4.4, Processador Quad-Core 1.3 GHz, Câmera 8MP, Tela de 5, Memória 8GB',
+'http://static.wmobjects.com.br/imgres/arquivos/ids/3791525-1000-1000/smartphone-lg-l-prime-d337-preto/titanio-dual-chip-tv-digital-android-4-4-processador-quad-core-1-3-ghz-camera-8mp-tela-de-5--memoria-8gb.jpg', 11, 576.99),
+(21, 'Smartphone LG L Prime D337 Branco e Preto', 3, 'Smartphone LG L Prime D337 Branco e Preto, Dual Chip, Android 4.4, Processador Quad-Core 1.3 GHz, Câmera 8MP, Tela de 5, Memória 8GB',
+'http://static.wmobjects.com.br/imgres/arquivos/ids/3766065-1000-1000/smartphone-lg-l-prime-d337-branco-e-preto-dual-chip-android-4-4-processador-quad-core-1-3-ghz-camera-8mp-tela-de-5--memoria-8gb.jpg', 4, 599.00),
+(22, 'Smartphone LG L80 Branco', 3, 'Smartphone LG L80 Branco Dual Chip Android 4.4 Wi-Fi 3G TV Digital Dual Core 1.2GHz, Tela 5 Câmera 8MP Memória 8GB Desbloqueado TIM',
+'http://static.wmobjects.com.br/imgres/arquivos/ids/4032480-1000-1000/smartphone-lg-l80-branco-dual-chip-android-4-4-wi-fi-3g-tv-digital-dual-core-1-2ghz-tela-5--camera-8mp-memoria-8gb-desbloqueado-tim.jpg', 3, 549.00),
+(23, 'Smartphone LG G2 Lite Preto/Titânio D295', 3, 'Smartphone LG G2 Lite Preto/Titânio D295, Dual Chip, Android 4.4, Processador Quad-Core 1.2GHz, Câmera 8MP, Tela de 4,5, Memória 4GB',
+'http://static.wmobjects.com.br/imgres/arquivos/ids/4146562-1000-1000/smartphone-lg-g2-lite-preto/titanio-d295-dual-chip-android-4-4-processador-quad-core-1-2ghz-camera-8mp-tela-de-45--memoria-4gb.jpg', 16, 944.16),
+(24, 'Smartphone LG G3 Stylus Preto/Titânio D690n', 3, 'Smartphone LG G3 Stylus Preto/Titânio D690n, Dual Chip, Android 4.4, Processador Quad-Core 1.3 GHz, Câmera 13MP, Tela de 5,5, Memória 8GB', 
+'http://static.wmobjects.com.br/imgres/arquivos/ids/4018819-1000-1000/smartphone-lg-g3-stylus-preto/titanio-d690n-dual-chip-android-4-4-processador-quad-core-1-3-ghz-camera-13mp-tela-de-55--memoria-8gb.jpg', 17, 708.00),
+(25, 'Smartphone LG L Prime D337 Preto e Dourado', 3, 'Smartphone LG L Prime D337 Preto e Dourado, Dual Chip, Android 4.4, Processador Quad-Core 1.3 GHz, Câmera 8MP, Tela de 5, Memória 8GB', 
+'http://static.wmobjects.com.br/imgres/arquivos/ids/3968059-1000-1000/smartphone-lg-l-prime-d337-preto-e-dourado-dual-chip-android-4-4-processador-quad-core-1-3-ghz-camera-8mp-tela-de-5--memoria-8gb.jpg', 23, 599.00),
+(26, 'Smartphone LG G3 Stylus D690n Preto e Branco', 3, 'Smartphone LG G3 Stylus D690n Preto e Branco, Dual Chip, Android 4.4, Processador Quad-Core 1.3GHz, Câmera 13MP, Tela de 5,5, Memória 8GB', 
+'http://static.wmobjects.com.br/imgres/arquivos/ids/4018845-1000-1000/smartphone-lg-g3-stylus-d690n-preto-e-branco-dual-chip-android-4-4-processador-quad-core-1-3ghz-camera-13mp-tela-de-55--memoria-8gb.jpg', 3, 708.00),
+(27, 'Smartphone LG G2 Desbloqueado Branco', 3, 'Smartphone LG G2 Desbloqueado Branco, Android 4.2, 3G/4G, 5.2, Processador Quad-Core 2.26GHz, 16GB Memória, Câmera 13MP', 
+'http://static.wmobjects.com.br/imgres/arquivos/ids/2572230-1000-1000/smartphone-lg-g2-desbloqueado-branco-android-4-2-3g/4g-5-2--processador-quad-core-2-26ghz-16gb-memoria-camera-13mp.jpg', 4, 1099.00),
+(28, 'Smartphone LG G Flex D956', 3, 'Smartphone LG G Flex D956, 4G, Processador Quad-Core, Android 4.2 Kit Kat, Câmera 13MP, Câmera Frontal 2.1MP, Tela 6 Poled Curva',
+'http://static.wmobjects.com.br/imgres/arquivos/ids/2878771-344-344/smartphone-lg-g-flex-d956-4g-processador-quad-core-android-4-2-kit-kat-camera-13mp-camera-frontal-2-1mp-tela-6--poled-curva.jpg', 16, 3317.77);

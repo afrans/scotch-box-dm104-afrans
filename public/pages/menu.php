@@ -24,7 +24,7 @@ class Menu {
 							'<li><a href="#">Microsoft</a></li>'.
 						'</ul>'.
 						'<ul class="nav navbar-nav navbar-right">'.
-							'<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>'.
+							'<li><a href="#"><span class="glyphicon glyphicon-shopping-cart textCart"></span>{{ cartMessage }}</a></li>'.
 							'<li><a href="#">Entrar</a></li>'.
 						'</ul>'.
 					'</div>'.

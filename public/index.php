@@ -18,22 +18,27 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	<body>
+	<body ng-controller="ProductController" ng-init="init()">
 		
 		<div id="topo_da_pagina" class="page-header">
 			<h1 class="text-center">Smartphone Store</h1>
 		</div>
+		
 		<?php
 			include 'pages/menu.php';
 			$menu = new Menu();
 			$menu->buildMenu();
 		?>
 		
-		<div id="content" ng-controller="ProductController" ng-init="init()">
+		<div id="content">
 			<div ng-repeat="product in productList" class="col-md-4 col-sm-6 col-xs-12 productInfo">
+				<p class="lead">{{product.name}}</p>
 				<img ng-src="{{product.url_foto}}" alt="image" class="img-responsive">
-				<span>{{product.name}}</span>
-				<span>{{product.price}}</span>
+				
+				<strong>Por: {{product.preco | currency:"R$"}}</strong>
+				<p>
+  					<button class="btn btn-primary" type="button">Detalhes</button>
+				</p>
 			</div>
 			
 		</div>
