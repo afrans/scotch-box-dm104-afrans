@@ -7,7 +7,6 @@ $app->get('/', function() {
 	echo "Welcome to Guest API";
 });
 
-
 $app->get('/all_products/', function() use ( $app ) {
 
     $db = getDB();
@@ -28,13 +27,12 @@ $app->get('/all_products/', function() use ( $app ) {
 	
 });
 
-
 $app->get('/type_product/:marca_id', function ($marca_id) use ( $app ) {
 
     $db = getDB();
 	$json_result= array();
-    
-    foreach ($db->produto() as $produto) {
+
+    foreach ($db->produto()->where("marca_id = ?", $marca_id) as $produto) {
 	$json_result[]= array(
 	'name' => $produto["nome"], 
 	'marca' => $produto->marca["nome"], 
@@ -42,15 +40,6 @@ $app->get('/type_product/:marca_id', function ($marca_id) use ( $app ) {
 	'quantidade' => $produto["quantidade"], 
 	'preco' => $produto["preco"]
 	);}
-	foreach ($db->produto()->where("marca_id = ?", $marca_id) as $produto) {
-	$json_result[]= array(
-	'name' => $produto["nome"], 
-	'marca' => $produto->marca["nome"], 
-	'url_foto' => $produto["url_foto"], 
-	'quantidade' => $produto["quantidade"], 
-	'preco' => $produto["preco"]
-	);}
-	
 	$app->response()->header('Content-Type', 'application/json');
 	echo json_encode($json_result);
     
