@@ -2,3 +2,4 @@
 .vagrant
 public/bower_components
 public/api/vendor
+public/api/vendor/*
