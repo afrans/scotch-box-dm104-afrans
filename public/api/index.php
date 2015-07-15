@@ -7,62 +7,50 @@ $app->get('/', function() {
 	echo "Welcome to Guest API";
 });
 
-$app->get('/all_products', function() use ( $app ) {
+
+$app->get('/all_products/', function() use ( $app ) {
 
     $db = getDB();
-	$json_result = '{"products": [';
-    $first_item = True; 
+	$json_result= array();
 
     foreach ($db->produto() as $produto) {
     
-        if ($first_item) {
-        	$first_item = False;
-        } else {
-        	$json_result .= ',';
-        }
- 
-        $json_result .= '{"name": "'.$produto["nome"];
-        $json_result .= '", "marca": "'.$produto->marca["nome"];
-        $json_result .= '", "descricao": "'.$produto["descricao"];
-        $json_result .= '", "url_foto": "'.$produto["url_foto"];
-        $json_result .= '", "quantidade": "'.$produto["quantidade"];
-        $json_result .= '", "preco": "'.$produto["preco"];
-        $json_result .= '"}';
-
-    }
-
-	$json_result .= ']}';
-
+	$json_result[]= array(
+	'name' => $produto["nome"], 
+	'marca' => $produto->marca["nome"], 
+	'url_foto' => $produto["url_foto"], 
+	'quantidade' => $produto["quantidade"], 
+	'preco' => $produto["url_foto"]
+	);
+	}
 	$app->response()->header('Content-Type', 'application/json');
 	echo json_encode($json_result);
+	
 });
 
-$app->post('/type_product/:marca_id', function ($marca_id) use ( $app ) {
+
+$app->get('/type_product/:marca_id', function ($marca_id) use ( $app ) {
 
     $db = getDB();
-    $json_result = '[';
-    $first_item = True;
+	$json_result= array();
     
-    foreach ($db->produto()->where("marca_id = ?", $marca_id) as $produto) {
-    
-        if ($first_item) {
-        $first_item = False;
-        } else {
-        $json_result .= ',';
-        }
- 
-        $json_result .= '{name: "'.$produto["nome"];
-        $json_result .= '", marca: "'.$produto->marca["nome"];
-        $json_result .= '", descricao: "'.$produto["descricao"];
-        $json_result .= '", url_foto: "'.$produto["url_foto"];
-        $json_result .= '", quantidade: "'.$produto["quantidade"];
-        $json_result .= '", preco: "'.$produto["preco"];
-        $json_result .= '"}';
-
-    }
-
-    $json_result .= ']';
-
+    foreach ($db->produto() as $produto) {
+	$json_result[]= array(
+	'name' => $produto["nome"], 
+	'marca' => $produto->marca["nome"], 
+	'url_foto' => $produto["url_foto"], 
+	'quantidade' => $produto["quantidade"], 
+	'preco' => $produto["preco"]
+	);}
+	foreach ($db->produto()->where("marca_id = ?", $marca_id) as $produto) {
+	$json_result[]= array(
+	'name' => $produto["nome"], 
+	'marca' => $produto->marca["nome"], 
+	'url_foto' => $produto["url_foto"], 
+	'quantidade' => $produto["quantidade"], 
+	'preco' => $produto["preco"]
+	);}
+	
 	$app->response()->header('Content-Type', 'application/json');
 	echo json_encode($json_result);
     
