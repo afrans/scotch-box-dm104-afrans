@@ -8,8 +8,7 @@ app.factory('ProductService', function() {
 			contentType: 'application/json',
 			url: 'api/all_products',
 			success: function(responseData) {
-				var productList = JSON.parse(responseData);
-				callBack(productList);
+				callBack(responseData);
 			},
 			error: function() {
 				console.log('Error to add guest ');

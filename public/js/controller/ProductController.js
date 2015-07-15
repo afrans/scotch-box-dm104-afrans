@@ -9,7 +9,7 @@ app.controller('ProductController', ['$rootScope', '$scope', 'ProductService', f
 	
 	$scope.setProductList = function(productList) {
 		$scope.$apply(function() {
-			$scope.productList = productList.products;
+			$scope.productList = productList;
 		});
 	};
 	

@@ -8,7 +8,6 @@
 		
 		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/estilo.css">
-		<!-- <link rel="icon" type="image/png" href="http://192.168.33.10/favicon.ico"> -->
 		<link rel="icon" href="favicon.ico">
 		
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
