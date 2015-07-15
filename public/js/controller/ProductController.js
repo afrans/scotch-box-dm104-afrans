@@ -6,7 +6,12 @@ app.controller('ProductController', ['$scope', 'ProductService', function($scope
 		
 	$scope.init = function() {
 		$scope.setCartMessage();
-		$scope.productList = ProductService.getProductList();
+		ProductService.getProductList($scope.setProductList);
+	};
+	
+	$scope.setProductList = function(productList) {
+		$scope.productList = productList.products;
+		$scope.$apply();
 	};
 	
 	$scope.setCartMessage = function() {

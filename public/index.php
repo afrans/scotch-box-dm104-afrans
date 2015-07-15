@@ -32,7 +32,7 @@
 		
 		<div id="content">
 			<div ng-repeat="product in productList" class="col-md-4 col-sm-6 col-xs-12 productInfo">
-				<img ng-src="{{product.url_image}}" alt="image" class="img-responsive">
+				<img ng-src="{{product.url_foto}}" alt="image" class="img-responsive">
 				<span>{{product.name}}</span>
 				<span>{{product.price}}</span>
 			</div>
