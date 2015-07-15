@@ -40,7 +40,6 @@
   					<button class="btn btn-primary" type="button">Detalhes</button>
 				</p>
 			</div>
-			
 		</div>
 
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -49,5 +48,6 @@
 		<script src="js/index.js"></script>
 		<script src="js/service/ProductService.js"></script>
 		<script src="js/controller/ProductController.js"></script>
+		<script src="js/controller/CartController.js"></script>
 	</body>
 </html>

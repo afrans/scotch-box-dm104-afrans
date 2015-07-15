@@ -3,6 +3,12 @@
 class Menu {
 	
 	public function buildMenu() {
+		
+		$currentPage = '0';
+		if ( isset($_GET['m']) ) {
+			$currentPage = $_GET['m'];	
+		}
+		
 		$menu = 			
 			'<nav class="navbar navbar-default">'.
 				'<div class="container">'.
@@ -15,13 +21,13 @@ class Menu {
 						'</button>'.
 						'<a class="navbar-brand" href="#">Menu</a>'.
 					'</div>'.
-					'<div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">'.
+					'<div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;" ng-controller="CartController">'.
 						'<ul class="nav navbar-nav">'.
-							'<li class="active"><a href="#">Home</a></li>'.
-							'<li><a href="#">Apple</a></li>'.
-							'<li><a href="#">Samsung</a></li>'.
-							'<li><a href="#">LG</a></li>'.
-							'<li><a href="#">Microsoft</a></li>'.
+							'<li '. ($currentPage == '0' ? 'class="active"' : '') . '><a href="?">Home</a></li>'.
+							'<li '. ($currentPage == '1' ? 'class="active"' : '') . '><a href="?m=1">Apple</a></li>'.
+							'<li '. ($currentPage == '2' ? 'class="active"' : '') . '><a href="?m=2">Samsung</a></li>'.
+							'<li '. ($currentPage == '3' ? 'class="active"' : '') . '><a href="?m=3">LG</a></li>'.
+							'<li '. ($currentPage == '4' ? 'class="active"' : '') . '><a href="?m=4">Microsoft</a></li>'.
 						'</ul>'.
 						'<ul class="nav navbar-nav navbar-right">'.
 							'<li><a href="#"><span class="glyphicon glyphicon-shopping-cart textCart"></span>{{ cartMessage }}</a></li>'.

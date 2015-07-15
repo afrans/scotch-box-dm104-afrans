@@ -1,29 +1,18 @@
-app.controller('ProductController', ['$scope', 'ProductService', function($scope, ProductService) {
+app.controller('ProductController', ['$rootScope', '$scope', 'ProductService', function($rootScope, $scope, ProductService) {
 	
 	$scope.productList = [];
-	$scope.cartItens = [];
-	$scope.cartMessage = '';
 	
 	$scope.init = function() {
-		$scope.setCartMessage();
+		$scope.$emit('cartUpdateMessage');
 		ProductService.getProductList($scope.setProductList);
 	};
 	
 	$scope.setProductList = function(productList) {
-		$scope.productList = productList.products;
-		$scope.$apply();
+		$scope.$apply(function() {
+			$scope.productList = productList.products;
+		});
 	};
 	
-	$scope.setCartMessage = function() {
-		if ($scope.cartItens.length === 0) {
-			$scope.cartMessage = 'Vazio';
-			
-		} else if ($scope.cartItens.length === 1) {
-			$scope.cartMessage = $scope.cartItens.length + ' item';
-		
-		} else {
-			$scope.cartMessage = $scope.cartItens.length + ' itens';
-		}
-	};
+	
 	
 }]);

@@ -35,6 +35,7 @@ create table venda (
 	produto_id integer not null,
 	data_venda date not null,
 	quantidade integer not null,
+	status_do_pedido varchar(50) not null default 'Pedido Realizado',
 	constraint cli_fk foreign key (cliente_id)
 	references cliente(id),
 	constraint pro_fk foreign key (produto_id)

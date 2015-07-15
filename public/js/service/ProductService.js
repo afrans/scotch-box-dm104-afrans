@@ -17,6 +17,10 @@ app.factory('ProductService', function() {
 		});
 	};
 	
+	service.getProductInformation = function() {
+		//TODO: XRODFAR
+	};
+	
 	return service;
 	
 });
