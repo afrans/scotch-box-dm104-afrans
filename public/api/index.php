@@ -45,7 +45,7 @@ $app->get('/type_product/:marca_id', function ($marca_id) use ( $app ) {
     
 });
 
-$app->get('/products(/:marca_id)', function ($marca_id = NULL) use ( $app ) {
+$app->get('/product(/:marca_id)', function ($marca_id = NULL) use ( $app ) {
 
     $db = getDB();
 	$json_result= array();
@@ -69,6 +69,45 @@ $app->get('/products(/:marca_id)', function ($marca_id = NULL) use ( $app ) {
 	'preco' => $produto["preco"]
 	);}
     }
+	$app->response()->header('Content-Type', 'application/json');
+	echo json_encode($json_result);
+    
+    });
+
+$app->get('/products(/:type(/:value))', function ($type = NULL, $value = NULL) use ( $app ) {
+
+    $db = getDB();
+	$json_result= array();
+
+    if($type==NULL and $value==NULL){
+    foreach ($db->produto() as $produto) {
+	$json_result[]= array(
+	'name' => $produto["nome"], 
+	'marca' => $produto->marca["nome"], 
+	'url_foto' => $produto["url_foto"], 
+	'quantidade' => $produto["quantidade"], 
+	'preco' => $produto["preco"]
+	);}
+    } else if ($type=="marca_id") {
+    foreach ($db->produto()->where("marca_id = ?", $value) as $produto) {
+	$json_result[]= array(
+	'name' => $produto["nome"], 
+	'marca' => $produto->marca["nome"], 
+	'url_foto' => $produto["url_foto"], 
+	'quantidade' => $produto["quantidade"], 
+	'preco' => $produto["preco"]
+	);}
+    } else {
+    foreach ($db->produto()->where("id = ?", $value) as $produto) {
+	$json_result[]= array(
+	'name' => $produto["nome"], 
+	'marca' => $produto->marca["nome"], 
+	'url_foto' => $produto["url_foto"], 
+	'quantidade' => $produto["quantidade"], 
+	'preco' => $produto["preco"]
+	);}
+    } 
+    
 	$app->response()->header('Content-Type', 'application/json');
 	echo json_encode($json_result);
     
