@@ -22,8 +22,20 @@ app.factory('ProductService', function() {
 		});
 	};
 	
-	service.getProductInformation = function() {
-		//TODO: XRODFAR
+	service.getProductInformation = function(callBack, productId) {
+		var apiUrl = 'api/products/id/' + productId;
+		
+		$.ajax({
+			type: 'GET',
+			contentType: 'application/json',
+			url: apiUrl,
+			success: function(responseData) {
+				callBack(responseData);
+			},
+			error: function() {
+				console.log('Error to add guest ');
+			}
+		});
 	};
 	
 	return service;

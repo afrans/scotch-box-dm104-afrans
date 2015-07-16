@@ -17,7 +17,7 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	<body ng-controller="ProductController" ng-init="init()">
+	<body ng-controller="ProductListController" ng-init="init()">
 		
 		<div id="topo_da_pagina" class="page-header">
 			<h1 class="text-center">Smartphone Store</h1>
@@ -30,23 +30,16 @@
 		?>
 		
 		<div id="content">
-		
-			<div ng-repeat="product in productList" class="col-md-4 col-sm-6 col-xs-12 productInfo">
-				<p class="lead">{{product.nome}}</p>
-				<img ng-src="{{product.url_foto}}" alt="image" class="img-responsive">
-				
-				<strong>Por: {{product.preco | currency:"R$"}}</strong>
-				<p>
-  					<button class="btn btn-primary" type="button">+ Detalhes</button>
-				</p>
-			</div>
+			<div ng-view=""></div>
 		</div>
 
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
 		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="bower_components/angular-route/angular-route.js"></script>
 		<script src="js/index.js"></script>
 		<script src="js/service/ProductService.js"></script>
+		<script src="js/controller/ProductListController.js"></script>
 		<script src="js/controller/ProductController.js"></script>
 		<script src="js/controller/CartController.js"></script>
 	</body>
