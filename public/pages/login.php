@@ -3,7 +3,7 @@
 		<fieldset>
 			<legend>Login</legend>
 			
-			<div><p class="bg-danger" ng-show="{{messageError}}">{{messageError}}</p></div>
+			<div><p class="bg-danger" ng-show="{{messageError !== null}}">{{messageError}}</p></div>
 			
 			<div class="form-group">
 				<label for="exampleInputEmail1">E-mail</label>

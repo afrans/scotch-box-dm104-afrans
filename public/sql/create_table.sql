@@ -32,12 +32,19 @@ create table produto (
 create table venda (
 	id int not null primary key,
 	cliente_id integer not null,
-	produto_id integer not null,
-	data_venda date not null,
-	quantidade integer not null,
+	data_venda timestamp not null,
 	status_do_pedido varchar(50) not null default 'Pedido Realizado',
 	constraint cli_fk foreign key (cliente_id)
-	references cliente(id),
-	constraint pro_fk foreign key (produto_id)
-	references produto(id)
+	references cliente(id)
+);
+
+create table produtos_venda (
+	id int not null primary key,
+	venda_id integer not null,
+	produto_id integer not null,
+	quantidade integer not null,
+	constraint prov_fk foreign key (produto_id)
+	references produto(id),
+	constraint ven_fk foreign key (venda_id)
+	references venda(id)
 );
