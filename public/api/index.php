@@ -19,7 +19,7 @@ $app->get('/all_products/', function() use ( $app ) {
 	'marca' => $produto->marca["nome"], 
 	'url_foto' => $produto["url_foto"], 
 	'quantidade' => $produto["quantidade"], 
-	'preco' => $produto["url_foto"]
+	'preco' => $produto["preco"]
 	);
 	}
 	$app->response()->header('Content-Type', 'application/json');
@@ -44,6 +44,35 @@ $app->get('/type_product/:marca_id', function ($marca_id) use ( $app ) {
 	echo json_encode($json_result);
     
 });
+
+$app->get('/products(/:marca_id)', function ($marca_id = NULL) use ( $app ) {
+
+    $db = getDB();
+	$json_result= array();
+
+    if($marca_id!=NULL){
+    foreach ($db->produto()->where("marca_id = ?", $marca_id) as $produto) {
+	$json_result[]= array(
+	'name' => $produto["nome"], 
+	'marca' => $produto->marca["nome"], 
+	'url_foto' => $produto["url_foto"], 
+	'quantidade' => $produto["quantidade"], 
+	'preco' => $produto["preco"]
+	);}
+    }else {
+    foreach ($db->produto() as $produto) {
+	$json_result[]= array(
+	'name' => $produto["nome"], 
+	'marca' => $produto->marca["nome"], 
+	'url_foto' => $produto["url_foto"], 
+	'quantidade' => $produto["quantidade"], 
+	'preco' => $produto["preco"]
+	);}
+    }
+	$app->response()->header('Content-Type', 'application/json');
+	echo json_encode($json_result);
+    
+    });
 
 $app->post('/guest', function () use ( $app ) {
     
