@@ -19,7 +19,7 @@ class Menu {
 							'<span class="icon-bar"></span>'.
 							'<span class="icon-bar"></span>'.
 						'</button>'.
-						'<a class="navbar-brand" href="#">Menu</a>'.
+						'<a class="navbar-brand" href="">Menu</a>'.
 					'</div>'.
 					'<div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;" ng-controller="CartController">'.
 						'<ul class="nav navbar-nav">'.
@@ -31,7 +31,7 @@ class Menu {
 						'</ul>'.
 						'<ul class="nav navbar-nav navbar-right">'.
 							'<li><a href="#"><span class="glyphicon glyphicon-shopping-cart textCart"></span>{{ cartMessage }}</a></li>'.
-							'<li><a href="#">Entrar</a></li>'.
+							'<li><a href="/#/login">Entrar</a></li>'.
 						'</ul>'.
 					'</div>'.
 				'</div>'.

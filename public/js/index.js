@@ -8,6 +8,9 @@ app.config(function ($routeProvider) {
 			.when('/product/:id', {
 				templateUrl: 'pages/product.php'
 			})
+			.when('/login', {
+				templateUrl: 'pages/login.php'
+			})
 			.otherwise({
 				redirectTo: '/'
 			});
