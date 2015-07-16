@@ -82,6 +82,7 @@ $app->get('/products(/:type(/:value))', function ($type = NULL, $value = NULL) u
     if($type==NULL and $value==NULL){
     foreach ($db->produto() as $produto) {
 	$json_result[]= array(
+		'id' => $produto["id"], 
 	'nome' => $produto["nome"], 
 	'marca' => $produto->marca["nome"], 
 	'url_foto' => $produto["url_foto"], 
@@ -91,6 +92,7 @@ $app->get('/products(/:type(/:value))', function ($type = NULL, $value = NULL) u
     } else if ($type=="marca_id") {
     foreach ($db->produto()->where("marca_id = ?", $value) as $produto) {
 	$json_result[]= array(
+		'id' => $produto["id"], 
 	'nome' => $produto["nome"], 
 	'marca' => $produto->marca["nome"], 
 	'url_foto' => $produto["url_foto"], 
@@ -100,6 +102,7 @@ $app->get('/products(/:type(/:value))', function ($type = NULL, $value = NULL) u
     } else {
     foreach ($db->produto()->where("id = ?", $value) as $produto) {
 	$json_result[]= array(
+		'id' => $produto["id"], 
 	'nome' => $produto["nome"], 
 	'marca' => $produto->marca["nome"], 
 	'url_foto' => $produto["url_foto"], 
