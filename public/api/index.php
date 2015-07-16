@@ -82,7 +82,7 @@ $app->get('/products(/:type(/:value))', function ($type = NULL, $value = NULL) u
     if($type==NULL and $value==NULL){
     foreach ($db->produto() as $produto) {
 	$json_result[]= array(
-	'name' => $produto["nome"], 
+	'nome' => $produto["nome"], 
 	'marca' => $produto->marca["nome"], 
 	'url_foto' => $produto["url_foto"], 
 	'quantidade' => $produto["quantidade"], 
@@ -91,7 +91,7 @@ $app->get('/products(/:type(/:value))', function ($type = NULL, $value = NULL) u
     } else if ($type=="marca_id") {
     foreach ($db->produto()->where("marca_id = ?", $value) as $produto) {
 	$json_result[]= array(
-	'name' => $produto["nome"], 
+	'nome' => $produto["nome"], 
 	'marca' => $produto->marca["nome"], 
 	'url_foto' => $produto["url_foto"], 
 	'quantidade' => $produto["quantidade"], 
@@ -100,7 +100,7 @@ $app->get('/products(/:type(/:value))', function ($type = NULL, $value = NULL) u
     } else {
     foreach ($db->produto()->where("id = ?", $value) as $produto) {
 	$json_result[]= array(
-	'name' => $produto["nome"], 
+	'nome' => $produto["nome"], 
 	'marca' => $produto->marca["nome"], 
 	'url_foto' => $produto["url_foto"], 
 	'quantidade' => $produto["quantidade"], 
@@ -113,18 +113,61 @@ $app->get('/products(/:type(/:value))', function ($type = NULL, $value = NULL) u
     
     });
 
-$app->post('/guest', function () use ( $app ) {
+$app->get('/client/:id', function($id) use ( $app ) {
+
+    $db = getDB();
+	$json_result= array();
+
+    foreach ($db->cliente()->where("id = ?", $id) as $client) {
     
-	$db = getDB();
-	$guestToAdd = json_decode($app->request->getBody(), true);
-	$guest = $db->user->insert($guestToAdd);
-	$app->response->header('Content-Type', 'application/json');
-	echo json_encode($guest);
+	$json_result[]= array(
+	'nome' => $client["nome"], 
+	'sobrenome' => $client["sobrenome"], 
+	'senha' => $client["senha"], 
+	'cpf' => $client["cpf"],
+    'telefone' => $client["telefone"],
+    'email' => $client["email"], 
+    'endereco' => $client["endereco"],
+    'bairro' => $client["bairro"], 
+    'cidade' => $client["cidade"], 
+	'estado' => $client["estado"]
+	);
+	}
+	$app->response()->header('Content-Type', 'application/json');
+	echo json_encode($json_result);
+	
 });
 
+$app->post('/client', function () use ( $app ) {
+    
+	$db = getDB();
+	$clientToAdd = json_decode($app->request->getBody(), true);
+	$client = $db->cliente->insert($clientToAdd);
+	$app->response->header('Content-Type', 'application/json');
+	echo json_encode($client);
+});
+
+$app->get('/login(/:email(/:senha))', function($email, $senha) use ( $app ) {
+
+    $db = getDB();
+	$json_result= array();
+
+    foreach ($db->cliente()->where("email = ? AND senha = ?" , $email, $senha) as $client) {
+	$json_result[]= array(
+	'nome' => $client["nome"], 
+	'sobrenome' => $client["sobrenome"]
+	);
+	}
+	$app->response()->header('Content-Type', 'application/json');
+	echo json_encode($json_result);
+	
+});
+
+/*
 $app->delete('/guest/:id', function($id) use ( $app ) { 
 	echo $id;
 });
+*/
 
 function getConnection() {
 	$dbhost = 'localhost';
@@ -134,6 +177,7 @@ function getConnection() {
 	$pdo = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 	return $pdo;
 }
+
 
 function getDB() {
 	$pdo = getConnection();
