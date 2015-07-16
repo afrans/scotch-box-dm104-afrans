@@ -2,11 +2,17 @@ app.factory('ProductService', function() {
 	
 	var service = {};
 	
-	service.getProductList = function(callBack) {
+	service.getProductList = function(callBack, marcaId) {
+		
+		var apiUrl = 'api/products';
+		if (marcaId) {
+			apiUrl += '/marca_id/' + marcaId;
+		}		
+		
 		$.ajax({
 			type: 'GET',
 			contentType: 'application/json',
-			url: 'api/all_products',
+			url: apiUrl,
 			success: function(responseData) {
 				callBack(responseData);
 			},
