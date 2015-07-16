@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 $app = new \Slim\Slim();
 
 $app->get('/', function() {
-	echo "Welcome to Guest API";
+	echo "Welcome to SmartphoneStore API";
 });
 
 $app->get('/products(/:type(/:value))', function ($type = NULL, $value = NULL) use ( $app ) {
@@ -90,12 +90,6 @@ $app->post('/login(/:email(/:senha))', function($email = NULL, $senha = NULL) us
 	$app->response()->header('Content-Type', 'application/json');
 	echo json_encode($json_result);
 });
-
-/*
-$app->delete('/guest/:id', function($id) use ( $app ) { 
-	echo $id;
-});
-*/
 
 function getConnection() {
 	$dbhost = 'localhost';

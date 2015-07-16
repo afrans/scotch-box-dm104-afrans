@@ -39,8 +39,10 @@
 		<script src="bower_components/angular-route/angular-route.js"></script>
 		<script src="js/index.js"></script>
 		<script src="js/service/ProductService.js"></script>
+		<script src="js/service/CustomerService.js"></script>
 		<script src="js/controller/ProductListController.js"></script>
 		<script src="js/controller/ProductController.js"></script>
 		<script src="js/controller/CartController.js"></script>
+		<script src="js/controller/LoginController.js"></script>
 	</body>
 </html>

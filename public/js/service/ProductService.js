@@ -17,7 +17,7 @@ app.factory('ProductService', function() {
 				callBack(responseData);
 			},
 			error: function() {
-				console.log('Error to add guest ');
+				console.log('Error to retrieve products');
 			}
 		});
 	};
@@ -33,7 +33,7 @@ app.factory('ProductService', function() {
 				callBack(responseData);
 			},
 			error: function() {
-				console.log('Error to add guest ');
+				console.log('Error to retrieve products');
 			}
 		});
 	};
