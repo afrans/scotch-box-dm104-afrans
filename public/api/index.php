@@ -75,7 +75,7 @@ $app->post('/client', function () use ( $app ) {
 	echo json_encode($client);
 });
 
-$app->get('/login(/:email(/:senha))', function($email = NULL, $senha = NULL) use ( $app ) {
+$app->post('/login(/:email(/:senha))', function($email = NULL, $senha = NULL) use ( $app ) {
 
     $db = getDB();
 	$json_result = NULL;
