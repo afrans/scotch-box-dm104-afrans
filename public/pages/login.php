@@ -1,17 +1,19 @@
 <div ng-controller="LoginController" class="col-md-6 col-sm-8 col-xs-12">
-	<form ng-submit="doLogin()">
+	<form ng-submit="doLogin()" name="loginForm">
 		<fieldset>
 			<legend>Login</legend>
 			
-			<div><p class="bg-danger" ng-show="{{messageError !== null}}">{{messageError}}</p></div>
+			<div class="alert alert-danger" ng-show="displayMessageError" role="alert">
+				<p>{{messageError}}</p>
+			</div>
 			
 			<div class="form-group">
 				<label for="exampleInputEmail1">E-mail</label>
-				<input type="email" class="form-control" id="exampleInputEmail1" placeholder="E-mail" required ng-model="email">
+				<input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder="E-mail" ng-required="true" ng-model="email">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputPassword1">Senha</label>
-				<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" required ng-model="password">
+				<input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Senha" ng-required="true" ng-model="password">
 			</div>
 
 			<button type="submit" class="btn btn-primary">Logar</button>
@@ -19,6 +21,6 @@
 	</form>
 	
 	<div class="message_new_register">
-		<p>Não tem cadastro? Faça seu cadastro <a href="">aqui!</a></p>
+		<p>Não tem cadastro? Faça seu cadastro <a href="#">aqui!</a></p>
 	</div>
 </div>
