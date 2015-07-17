@@ -1,11 +1,8 @@
 app.controller('ProductController', ['$location', '$scope', '$rootScope', 'ProductService', function($location, $scope, $rootScope, ProductService) {
 	
 	$scope.product = null;
-	$scope.cartItens = [];
-	$scope.cartMessage = '';
 	
 	$scope.initialize = function() {
-		
 		$scope.loadCartFromSessionStorage();
 		var productId = $scope.retrieveParameter();
 		ProductService.getProductInformation($scope.setProduct, productId);

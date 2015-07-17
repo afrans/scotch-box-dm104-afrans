@@ -41,8 +41,11 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 	
 	$scope.addProduct = function(product) {
 		$scope.cartItens.push(product);
+		$scope.updateChart();
+	};
+	
+	$scope.updateChart = function() {
 		sessionStorage.setItem('customerCart', JSON.stringify($scope.cartItens));
-		
 		$scope.setCartMessage();
 	};
 	
@@ -65,6 +68,19 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 		
 		} else {
 			$scope.cartMessage = itemsInCart + ' itens';
+		}
+	};
+	
+	$scope.removeItem = function(product) {
+		for (var i = 0; i < $scope.cartItens.length; i++) {
+			var item = $scope.cartItens[i];
+			
+			if (product.id === item.id) {
+				
+				$scope.cartItens.splice(i, 1);
+				$scope.updateChart();
+				break;
+			}
 		}
 	};
 	

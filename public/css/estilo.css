@@ -21,3 +21,17 @@ span.textCart {
 .message_new_register {
 	margin-top: 25px;
 }
+
+.cart_itens {
+	border-collapse: collapse;
+	width: 100%;
+	
+}
+
+th, td {
+	border: 1px solid black;
+}
+
+.remove-item {
+	cursor: pointer;
+}
