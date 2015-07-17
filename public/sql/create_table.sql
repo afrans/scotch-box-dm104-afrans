@@ -1,5 +1,5 @@
 create table cliente (
-	id int not null primary key,
+	id int not null primary key AUTO_INCREMENT,
 	nome varchar(45) not null,
 	sobrenome varchar(45) not null,
 	senha varchar(15) not null,
@@ -9,7 +9,7 @@ create table cliente (
 	endereco varchar(150) not null,
 	bairro varchar(100) not null,
 	cidade varchar(100) not null,
-	estado varchar(2) not null
+	estado varchar(60) not null
 );
 
 create table marca (
@@ -18,7 +18,7 @@ create table marca (
 );
 
 create table produto (
-	id int not null primary key,
+	id int not null primary key AUTO_INCREMENT,
 	marca_id integer not null,
 	nome varchar(45) not null,
 	descricao varchar (150) not null,
@@ -30,7 +30,7 @@ create table produto (
 );
 
 create table venda (
-	id int not null primary key,
+	id int not null primary key AUTO_INCREMENT,
 	cliente_id integer not null,
 	data_venda timestamp not null,
 	status_do_pedido varchar(50) not null default 'Pedido Realizado',
@@ -39,7 +39,7 @@ create table venda (
 );
 
 create table produtos_venda (
-	id int not null primary key,
+	id int not null primary key AUTO_INCREMENT,
 	venda_id integer not null,
 	produto_id integer not null,
 	quantidade integer not null,

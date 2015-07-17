@@ -72,7 +72,9 @@ $app->post('/client', function () use ( $app ) {
 	$clientToAdd = json_decode($app->request->getBody(), true);
 	$client = $db->cliente->insert($clientToAdd);
 	$app->response->header('Content-Type', 'application/json');
-	echo json_encode($client);
+	
+	$json_result = array ('result' => 'SUCCESS');
+	echo json_encode($json_result);
 });
 
 $app->post('/login(/:email(/:senha))', function($email = NULL, $senha = NULL) use ( $app ) {

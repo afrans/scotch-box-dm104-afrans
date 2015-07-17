@@ -18,6 +18,25 @@ app.factory('CustomerService', function() {
 		});
 	};
 	
+	service.save = function(callBack, customer) {
+		var apiUrl = 'api/client';
+		
+		$.ajax({
+			type: 'POST',
+			contentType: 'application/json',
+			data: customer,
+			url: apiUrl,
+			success: function(responseData) {
+				callBack(responseData);
+			},
+			error: function(responseData) {
+				callBack(responseData);
+			}
+		});
+	};
+	
+	
+	
 	return service;
 	
 });

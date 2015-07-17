@@ -1,8 +1,17 @@
 var app = angular.module("smartphoneStore", ['ngRoute']);
 
-app.config(function ($routeProvider) {
+app.config(['$routeProvider', function ($routeProvider) {
 		$routeProvider
-			.when('/', {
+			.when('/', {//////TODO : RODRIGO VER ISSO COM EDY
+				templateUrl: 'pages/productList.php'
+			})
+			.when('#', {
+				templateUrl: 'pages/productList.php'
+			})
+			.when('/#', {
+				templateUrl: 'pages/productList.php'
+			})
+			.when('/marca/:id', {
 				templateUrl: 'pages/productList.php'
 			})
 			.when('/product/:id', {
@@ -20,4 +29,4 @@ app.config(function ($routeProvider) {
 			.otherwise({
 				redirectTo: '/'
 			});
-	});
+	}]);
