@@ -2,13 +2,7 @@ var app = angular.module("smartphoneStore", ['ngRoute']);
 
 app.config(['$routeProvider', function ($routeProvider) {
 		$routeProvider
-			.when('/', {//////TODO : RODRIGO VER ISSO COM EDY
-				templateUrl: 'pages/productList.php'
-			})
-			.when('#', {
-				templateUrl: 'pages/productList.php'
-			})
-			.when('/#', {
+			.when('/', {
 				templateUrl: 'pages/productList.php'
 			})
 			.when('/marca/:id', {

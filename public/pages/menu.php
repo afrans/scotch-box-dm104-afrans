@@ -4,7 +4,7 @@ class Menu {
 	
 	public function buildMenu() {
 		
-		$menu = 			
+		$menu =
 			'<nav class="navbar navbar-default">'.
 				'<div class="container">'.
 					'<div class="navbar-header">'.
@@ -16,9 +16,9 @@ class Menu {
 						'</button>'.
 						'<a class="navbar-brand" href="">Menu</a>'.
 					'</div>'.
-					'<div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;" ng-controller="CartController">'.
+					'<div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">'.
 						'<ul class="nav navbar-nav">'.
-							'<li><a href="#">Home</a></li>'.
+							'<li><a href="#/">Home</a></li>'.
 							'<li><a href="#marca/1">Apple</a></li>'.
 							'<li><a href="#marca/2">Samsung</a></li>'.
 							'<li><a href="#marca/3">LG</a></li>'.

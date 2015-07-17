@@ -42,7 +42,6 @@
 		<script src="js/service/CustomerService.js"></script>
 		<script src="js/controller/ProductListController.js"></script>
 		<script src="js/controller/ProductController.js"></script>
-		<script src="js/controller/CartController.js"></script>
 		<script src="js/controller/LoginController.js"></script>
 		<script src="js/controller/CustomerController.js"></script>
 	</body>

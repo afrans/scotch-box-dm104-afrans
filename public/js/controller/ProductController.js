@@ -1,10 +1,12 @@
-app.controller('ProductController', ['$location', '$scope', 'ProductService', function($location, $scope, ProductService) {
+app.controller('ProductController', ['$location', '$scope', '$rootScope', 'ProductService', function($location, $scope, $rootScope, ProductService) {
 	
 	$scope.product = null;
+	$scope.cartItens = [];
+	$scope.cartMessage = '';
 	
 	$scope.initialize = function() {
-		$scope.$emit('cartUpdateMessage');
 		
+		$scope.loadCartFromSessionStorage();
 		var productId = $scope.retrieveParameter();
 		ProductService.getProductInformation($scope.setProduct, productId);
 	};

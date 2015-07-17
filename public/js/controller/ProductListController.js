@@ -1,12 +1,24 @@
 app.controller('ProductListController', ['$location', '$scope', 'ProductService', function($location, $scope, ProductService) {
 	
 	$scope.productList = [];
+	$scope.cartItens = [];
+	$scope.cartMessage = '';
 	
 	$scope.initListProduct = function() {
-		$scope.$emit('cartUpdateMessage');
+		$scope.loadCartFromSessionStorage();
+		$scope.setCartMessage();
 		
 		var marcaIdParameter = $scope.retrieveParameter();
 		ProductService.getProductList($scope.setProductList, marcaIdParameter);
+	};
+	
+	$scope.loadCartFromSessionStorage = function() {
+		var itens = sessionStorage.getItem('customerCart');
+		
+		if (itens !== null) {
+			var itensInSession = JSON.parse(itens);
+			$scope.cartItens = itensInSession;
+		}
 	};
 	
 	$scope.retrieveParameter = function() {
@@ -25,6 +37,35 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 	
 	$scope.openProductDetail = function(productId) {
 		 $location.url('/product/' + productId);
+	};
+	
+	$scope.addProduct = function(product) {
+		$scope.cartItens.push(product);
+		sessionStorage.setItem('customerCart', JSON.stringify($scope.cartItens));
+		
+		$scope.setCartMessage();
+	};
+	
+	$scope.setCartMessage = function() {
+		
+		var itemsInCart = 0;
+		var itens = sessionStorage.getItem('customerCart');
+		
+		if (itens !== null) {
+			var itensInSession = JSON.parse(itens);
+			itemsInCart = itensInSession.length;	
+		}
+		
+		
+		if (itemsInCart === 0) {
+			$scope.cartMessage = 'Vazio';
+			
+		} else if (itemsInCart === 1) {
+			$scope.cartMessage = itemsInCart + ' item';
+		
+		} else {
+			$scope.cartMessage = itemsInCart + ' itens';
+		}
 	};
 	
 }]);

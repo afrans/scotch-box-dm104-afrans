@@ -5,6 +5,6 @@
 	<p>{{product.descricao}}</p>
 	<strong>Por: {{product.preco | currency:"R$"}}</strong>
 	<p>
-		<button class="btn btn-primary" type="button" ng-click="">Adicionar ao carrinho</button>
+		<button class="btn btn-primary" type="button" ng-click="addProduct(product)">Adicionar ao carrinho</button>
 	</p>
 </div>
