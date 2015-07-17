@@ -1,3 +1,7 @@
+<div class="alert alert-info" ng-show="displayMessage" role="alert">
+	<p>{{message}}</p>
+</div>
+
 <div ng-controller="ProductController" ng-init="initialize()" class="col-md-6 col-sm-8 col-xs-12">
 	<p class="lead">{{product.nome}}</p>
 	<img ng-src="{{product.url_foto}}" alt="image" class="img-responsive">

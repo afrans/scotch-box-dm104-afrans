@@ -42,7 +42,6 @@ create table produtos_venda (
 	id int not null primary key AUTO_INCREMENT,
 	venda_id integer not null,
 	produto_id integer not null,
-	quantidade integer not null,
 	constraint prov_fk foreign key (produto_id)
 	references produto(id),
 	constraint ven_fk foreign key (venda_id)

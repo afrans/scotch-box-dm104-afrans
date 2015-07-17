@@ -1,15 +1,23 @@
-app.controller('ProductListController', ['$location', '$scope', 'ProductService', function($location, $scope, ProductService) {
+app.controller('ProductListController', ['$location', '$scope', 'ProductService', 'VendaService', function($location, $scope, ProductService, VendaService) {
 	
 	$scope.productList = [];
 	$scope.cartItens = [];
+	$scope.pedidos = [];
 	$scope.cartMessage = '';
 	$scope.billingAccount = 0;
-	
+	$scope.messageError = null;
+	$scope.displayMessageError = false;
+	$scope.displayMessage = false;
+	$scope.message = null;
+
 	$scope.initListProduct = function() {
 		$scope.loadCartFromSessionStorage();
 		
 		var marcaIdParameter = $scope.retrieveParameter();
 		ProductService.getProductList($scope.setProductList, marcaIdParameter);
+		
+		$scope.displayMessage = false;
+		$scope.message = null;
 	};
 	
 	$scope.loadCartFromSessionStorage = function() {
@@ -19,8 +27,8 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 			var itensInSession = JSON.parse(itens);
 			$scope.cartItens = itensInSession;
 			$scope.updateBillingAccount();
-			$scope.setCartMessage();
 		}
+		$scope.setCartMessage();
 	};
 	
 	$scope.retrieveParameter = function() {
@@ -44,6 +52,9 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 	$scope.addProduct = function(product) {
 		$scope.cartItens.push(product);
 		$scope.updateChart();
+		
+		$scope.displayMessage = true;		
+		$scope.message = 'Produto Adicionado ao Carrinho!';
 	};
 	
 	$scope.updateChart = function() {
@@ -55,10 +66,13 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 	$scope.updateBillingAccount = function() {
 		$scope.billingAccount = 0.0;
 		
-		for (var i = 0; i < $scope.cartItens.length; i++) {
-			var item = $scope.cartItens[i];
-			var price = parseFloat(item.preco);
-			$scope.billingAccount += price;
+		if ($scope.cartItens) {
+			
+			for (var i = 0; i < $scope.cartItens.length; i++) {
+				var item = $scope.cartItens[i];
+				var price = parseFloat(item.preco);
+				$scope.billingAccount += price;
+			}
 		}
 	};
 	
@@ -98,7 +112,43 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 	};
 	
 	$scope.closeOrdered = function() {
-		alert('RRR');
+		var now = new Date();
+		
+		var vendaObject = {
+			cliente_id: 10,
+			data_venda: now.getDate(),
+			produtos_venda: []
+		};
+		
+		for (var i = 0; i < $scope.cartItens.length; i++) {
+			var item = $scope.cartItens[i];
+			vendaObject.produtos_venda.push(item.id);
+		}
+		
+		VendaService.save($scope.callBackVenda, JSON.stringify(vendaObject));
+	};
+						  
+	$scope.callBackVenda = function(responseData) {
+		if (responseData && responseData.result === 'SUCCESS') {
+			$scope.clearChart();
+			
+		} else {
+			$scope.displayMessageError = true;
+			$scope.messageError = 'Erro ao finalizar o pedido. Por favor entre em contato com o administrador.';
+		}
+	};
+	
+	$scope.clearChart = function() {
+		$scope.cartItens = [];
+		$scope.updateChart();
+	};
+	
+	$scope.loadPedidos = function() {
+		VendaService.loadPedidos($scope.setPedidos);
+	};
+	
+	$scope.setPedidos = function(pedidos) {
+		$scope.pedidos = pedidos;
 	};
 	
 }]);
