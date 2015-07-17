@@ -3,10 +3,10 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 	$scope.productList = [];
 	$scope.cartItens = [];
 	$scope.cartMessage = '';
+	$scope.billingAccount = 0;
 	
 	$scope.initListProduct = function() {
 		$scope.loadCartFromSessionStorage();
-		$scope.setCartMessage();
 		
 		var marcaIdParameter = $scope.retrieveParameter();
 		ProductService.getProductList($scope.setProductList, marcaIdParameter);
@@ -18,6 +18,8 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 		if (itens !== null) {
 			var itensInSession = JSON.parse(itens);
 			$scope.cartItens = itensInSession;
+			$scope.updateBillingAccount();
+			$scope.setCartMessage();
 		}
 	};
 	
@@ -47,6 +49,17 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 	$scope.updateChart = function() {
 		sessionStorage.setItem('customerCart', JSON.stringify($scope.cartItens));
 		$scope.setCartMessage();
+		$scope.updateBillingAccount();
+	};
+	
+	$scope.updateBillingAccount = function() {
+		$scope.billingAccount = 0.0;
+		
+		for (var i = 0; i < $scope.cartItens.length; i++) {
+			var item = $scope.cartItens[i];
+			var price = parseFloat(item.preco);
+			$scope.billingAccount += price;
+		}
 	};
 	
 	$scope.setCartMessage = function() {
@@ -82,6 +95,10 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 				break;
 			}
 		}
+	};
+	
+	$scope.closeOrdered = function() {
+		alert('RRR');
 	};
 	
 }]);
