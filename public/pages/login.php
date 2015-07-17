@@ -8,12 +8,12 @@
 			</div>
 			
 			<div class="form-group">
-				<label for="exampleInputEmail1">E-mail</label>
-				<input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder="E-mail" ng-required="true" ng-model="email">
+				<label for="inputEmail1">E-mail</label>
+				<input type="email" class="form-control" name="email" id="inputEmail1" placeholder="E-mail" ng-required="true" ng-model="email">
 			</div>
 			<div class="form-group">
-				<label for="exampleInputPassword1">Senha</label>
-				<input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Senha" ng-required="true" ng-model="password">
+				<label for="inputPassword1">Senha</label>
+				<input type="password" class="form-control" name="password" id="inputPassword1" placeholder="Senha" ng-required="true" ng-model="password">
 			</div>
 
 			<button type="submit" class="btn btn-primary">Logar</button>
@@ -21,6 +21,6 @@
 	</form>
 	
 	<div class="message_new_register">
-		<p>Não tem cadastro? Faça seu cadastro <a href="#">aqui!</a></p>
+		<p>Não tem cadastro? Faça seu cadastro <a href="/#/customer">aqui!</a></p>
 	</div>
 </div>

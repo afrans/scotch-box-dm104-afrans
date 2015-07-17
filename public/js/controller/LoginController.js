@@ -1,4 +1,4 @@
-app.controller('LoginController', ['$scope', 'CustomerService', function($scope, CustomerService) {
+app.controller('LoginController', ['$scope', '$location', 'CustomerService', function($scope, $location, CustomerService) {
 	
 	$scope.email = null;
 	$scope.password = null;
@@ -19,6 +19,10 @@ app.controller('LoginController', ['$scope', 'CustomerService', function($scope,
 		$scope.$apply(function() {
 			$scope.messageError = message;
 			$scope.displayMessageError = message !== null;
+			
+			if (message === null) {
+				$location.url('/cart');	
+			}
 		});
 	};
 	

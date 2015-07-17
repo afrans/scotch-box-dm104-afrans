@@ -11,6 +11,12 @@ app.config(function ($routeProvider) {
 			.when('/login', {
 				templateUrl: 'pages/login.php'
 			})
+			.when('/cart', {
+				templateUrl: 'pages/cart.php'
+			})
+			.when('/customer', {
+				templateUrl: 'pages/customer.php'
+			})
 			.otherwise({
 				redirectTo: '/'
 			});
