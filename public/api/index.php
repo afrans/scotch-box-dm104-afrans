@@ -1,10 +1,14 @@
 <?php
 require 'vendor/autoload.php';
+
 $app = new \Slim\Slim();
+
 $app->get('/', function() {
 	echo "Welcome to SmartphoneStore API";
 });
+
 $app->get('/products(/:type(/:value))', function ($type = NULL, $value = NULL) use ( $app ) {
+
     $db = getDB();
 	$json_result= array();
     if($type==NULL and $value==NULL){
@@ -41,7 +45,9 @@ $app->get('/products(/:type(/:value))', function ($type = NULL, $value = NULL) u
 	$app->response()->header('Content-Type', 'application/json');
 	echo json_encode($json_result);
     });
+
 $app->get('/client/:id', function($id) use ( $app ) {
+
     $db = getDB();
     foreach ($db->cliente()->where("id = ?", $id) as $client) {
 	$json_result = array(
@@ -59,6 +65,7 @@ $app->get('/client/:id', function($id) use ( $app ) {
 	$app->response()->header('Content-Type', 'application/json');
 	echo json_encode($json_result);
 });
+
 $app->post('/client', function () use ( $app ) {
     
 	$db = getDB();
@@ -69,7 +76,9 @@ $app->post('/client', function () use ( $app ) {
 	$json_result = array ('result' => 'SUCCESS');
 	echo json_encode($json_result);
 });
+
 $app->post('/login(/:email(/:senha))', function($email = NULL, $senha = NULL) use ( $app ) {
+
     $db = getDB();
 	$json_result = NULL;
     foreach ($db->cliente()->where("email = ? AND senha = ?" , $email, $senha) as $client) { 
@@ -83,6 +92,7 @@ $app->post('/login(/:email(/:senha))', function($email = NULL, $senha = NULL) us
 	$app->response()->header('Content-Type', 'application/json');
 	echo json_encode($json_result);
 });
+
 $app->post('/order', function () use ( $app ) {
     
 	$db = getDB();
@@ -92,12 +102,14 @@ $app->post('/order', function () use ( $app ) {
     $json_result = array ('id' => $order["id"]);
     echo json_encode($json_result);
 });
+
 $app->post('/products_order', function () use ( $app ) {
     
 	$db = getDB();
 	$products_orderToAdd = json_decode($app->request->getBody(), true);
 	$products_order = $db->produtos_venda->insert($products_orderToAdd);
 	$app->response->header('Content-Type', 'application/json');
+
     if ($products_order!=false){
 	$json_result = array ('result' => 'SUCCESS');
 	echo json_encode($json_result);
@@ -105,8 +117,11 @@ $app->post('/products_order', function () use ( $app ) {
     $json_result = array ('result' => 'ERROR');
 	echo json_encode($json_result);
     }
+
 });
+
 $app->get('/order/:id', function($client_id) use ( $app ) {
+
     $db = getDB();
     $sales_id = NULL;    
 	$sales_date = NULL;
@@ -147,10 +162,12 @@ function getConnection() {
 	$pdo = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 	return $pdo;
 }
+
 function getDB() {
 	$pdo = getConnection();
 	$db = new NotORM($pdo);
 	return $db;
 }
+
 $app->run();
 ?>
