@@ -161,6 +161,24 @@ $app->get('/order/:id', function($client_id) use ( $app ) {
 		echo json_encode($json_result);
     }
 });
+
+$app->get('/sold_6', function() use ( $app ) {
+
+    $db = getDB();
+	$json_result = array();
+    
+    foreach ($db->produtos_venda()->select('produtos_venda.produto_id, COUNT(produtos_venda.produto_id) AS quantidade')->group('produtos_venda.produto_id')->order('quantidade DESC')->limit(6) as $products) { 
+		$json_result[] = array (
+			'produto_id' => $products["produto_id"],
+            'quantidade' => $products["quantidade"]
+		);
+	}
+	if ($json_result==[]){
+		$json_result = array ('result' => 'Not matched');
+	}
+	$app->response()->header('Content-Type', 'application/json');
+	echo json_encode($json_result);
+});
     
 function getConnection() {
 	$dbhost = 'localhost';
