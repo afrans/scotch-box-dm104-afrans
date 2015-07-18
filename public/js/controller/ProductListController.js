@@ -115,22 +115,30 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 		var now = new Date();
 		
 		var vendaObject = {
-			cliente_id: 10,
-			data_venda: now.getDate(),
-			produtos_venda: []
+			cliente_id: 5,
+			data_venda: now.getTime()
 		};
-		
-		for (var i = 0; i < $scope.cartItens.length; i++) {
-			var item = $scope.cartItens[i];
-			vendaObject.produtos_venda.push(item.id);
-		}
-		
-		VendaService.save($scope.callBackVenda, JSON.stringify(vendaObject));
+
+		VendaService.saveTableVenda($scope.callBackSaveTableVenda, JSON.stringify(vendaObject));
 	};
 						  
-	$scope.callBackVenda = function(responseData) {
-		if (responseData && responseData.result === 'SUCCESS') {
+	$scope.callBackSaveTableVenda = function(responseData) {
+		if (responseData && responseData.id) {
+			
+			for (var i = 0; i < $scope.cartItens.length; i++) {
+				
+				var vendaProductObj = {
+					venda_id: responseData.id,
+					produto_id: $scope.cartItens[i].id
+				};
+				
+				VendaService.saveTableProdutosVenda(JSON.stringify(vendaProductObj));
+			}
+			
 			$scope.clearChart();
+			$scope.displayMessage = true;		
+			$scope.message = 'Pedido Finalizado com sucesso!';
+			$scope.$apply();
 			
 		} else {
 			$scope.displayMessageError = true;

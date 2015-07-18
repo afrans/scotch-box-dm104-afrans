@@ -4,6 +4,11 @@
 	<p>{{messageError}}</p>
 </div>
 
+<div class="alert alert-info" ng-show="displayMessage" role="alert">
+	<p>{{message}}</p>
+</div>
+
+
 <div ng-init="loadCartFromSessionStorage()">
 
 	<table class="table table-bordered"> 
