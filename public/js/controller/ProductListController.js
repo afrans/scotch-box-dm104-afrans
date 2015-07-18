@@ -152,10 +152,11 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 	};
 	
 	$scope.loadPedidos = function() {
-		VendaService.loadPedidos($scope.setPedidos);
+		VendaService.loadPedidos($scope.setPedidos, 5);
 	};
 	
 	$scope.setPedidos = function(pedidos) {
+		$scope.$apply();
 		$scope.pedidos = pedidos;
 	};
 	
