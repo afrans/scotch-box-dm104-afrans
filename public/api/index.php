@@ -93,6 +93,59 @@ $app->post('/login(/:email(/:senha))', function($email = NULL, $senha = NULL) us
 	echo json_encode($json_result);
 });
 
+/*
+$app->get('/order/:id', function($client_id) use ( $app ) {
+
+    $db = getDB();
+    foreach ($db->venda()->where("cliente_id = ?", $client_id) as $order) {
+    $sales_id=$order["id"];    
+	$json_result = array(
+	'id' => $order["id"], 
+    'sale_date' => $order["data_venda"],     
+	'order_status' => $order["status_do_pedido"]
+	);}
+    // soma valor
+    foreach ($db->produtos_venda()->where("venda_id = ?", $sales_id) as $sale_product) {
+    foreach ($db->produto()->where("id = ?",$sale_product["produto_id"]) as $produto) {
+	$products_sum += $produto["preco"] 
+	);}
+    $json_result .= $products_sum;
+	$app->response()->header('Content-Type', 'application/json');
+	echo json_encode($json_result);
+});
+*/
+
+$app->post('/order', function () use ( $app ) {
+    
+	$db = getDB();
+	$orderToAdd = json_decode($app->request->getBody(), true);
+	$order = $db->venda->insert($orderToAdd);
+	$app->response->header('Content-Type', 'application/json');
+    $json_result = array ('id' => $order["id"]);
+    echo json_encode($json_result);
+});
+
+/*
+
+$app->post('/order', function () use ( $app ) {
+    
+	$db = getDB();
+	$orderToAdd = json_decode($app->request->getBody(), true);
+    
+    echo $orderToAdd;
+    
+    //echo $orderToAdd["qtd_produtos"];
+    //echo $orderToAdd["produtos[1,2]"];
+    
+	//$order = $db->venda->insert($orderToAdd);
+	//$app->response->header('Content-Type', 'application/json');
+	
+	//$json_result = array ('result' => 'SUCCESS');
+    //echo json_encode($json_result);
+    //echo json_encode($order);
+});
+*/
+
 function getConnection() {
 	$dbhost = 'localhost';
 	$dbuser = 'root';
