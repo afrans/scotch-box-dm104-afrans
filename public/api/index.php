@@ -93,28 +93,6 @@ $app->post('/login(/:email(/:senha))', function($email = NULL, $senha = NULL) us
 	echo json_encode($json_result);
 });
 
-/*
-$app->get('/order/:id', function($client_id) use ( $app ) {
-
-    $db = getDB();
-    foreach ($db->venda()->where("cliente_id = ?", $client_id) as $order) {
-    $sales_id=$order["id"];    
-	$json_result = array(
-	'id' => $order["id"], 
-    'sale_date' => $order["data_venda"],     
-	'order_status' => $order["status_do_pedido"]
-	);}
-    // soma valor
-    foreach ($db->produtos_venda()->where("venda_id = ?", $sales_id) as $sale_product) {
-    foreach ($db->produto()->where("id = ?",$sale_product["produto_id"]) as $produto) {
-	$products_sum += $produto["preco"] 
-	);}
-    $json_result .= $products_sum;
-	$app->response()->header('Content-Type', 'application/json');
-	echo json_encode($json_result);
-});
-*/
-
 $app->post('/order', function () use ( $app ) {
     
 	$db = getDB();
@@ -142,6 +120,40 @@ $app->post('/products_order', function () use ( $app ) {
 
 });
 
+$app->get('/order/:id', function($client_id) use ( $app ) {
+
+    $db = getDB();
+    $sales_id = NULL;    
+	$sales_date = NULL;
+	$sales_status = NULL;
+    $sale_price=NULL;
+	$json_result= array();
+    foreach ($db->venda()->where("cliente_id = ?", $client_id) as $order) {
+    $sale_price=0;
+    $sales_id = $order["id"];    
+	$sales_date = $order["data_venda"];
+	$sales_status = $order["status_do_pedido"];
+    foreach ($db->produtos_venda()->where("venda_id = ?", $sales_id) as $sale_product) {
+    foreach ($db->produto()->where("id = ?",$sale_product["produto_id"]) as $produto) {
+	$sale_price+= $produto["preco"];
+    }
+	}
+	$json_result[]= array(
+	'venda_id' => $sales_id, 
+    'data_venda' => $sales_date,     
+	'status' => $sales_status,
+    'Valor_total' => $sale_price     
+	);
+    }
+    if ($json_result!=[]){
+	$app->response()->header('Content-Type', 'application/json');
+	echo json_encode($json_result);
+    }else {
+    $json_result = array ('result' => 'Not matched');
+	echo json_encode($json_result);
+    }
+});
+    
 function getConnection() {
 	$dbhost = 'localhost';
 	$dbuser = 'root';
