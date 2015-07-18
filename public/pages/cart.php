@@ -1,3 +1,9 @@
+<?php
+	include 'sessionLogin.php';
+	$login = new SessionLogin();
+	$login->isUserLogged();
+?>
+
 <h2>Itens no carrinho:</h2>
 
 <div class="alert alert-danger" ng-show="displayMessageError" role="alert">
@@ -57,6 +63,10 @@
 				<td>{{pedido.data_venda | date}}</td>	
 				<td>{{pedido.valor_total | currency:"R$"}}</td>
 				<td>{{pedido.status}}</td>
+			</tr>
+			
+			<tr ng-show="pedidos.length === 0">
+				<td colspan="4">Nenhum pedido feito até o momento!</td>
 			</tr>
 		</tbody>
 	</table>	

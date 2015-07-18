@@ -81,14 +81,18 @@ $app->post('/login(/:email(/:senha))', function($email = NULL, $senha = NULL) us
 
     $db = getDB();
 	$json_result = NULL;
+	
     foreach ($db->cliente()->where("email = ? AND senha = ?" , $email, $senha) as $client) { 
-	$json_result = array (
-	'nome' => $client["nome"], 
-	'sobrenome' => $client["sobrenome"]
-	);}
+		$json_result = array (
+			'nome' => $client["nome"], 
+			'id' => $client["id"]
+		);
+	}
+	
 	if ($json_result==NULL){
 		$json_result = array ('login' => 'Email/Senha inválidos');
 	}
+	
 	$app->response()->header('Content-Type', 'application/json');
 	echo json_encode($json_result);
 });

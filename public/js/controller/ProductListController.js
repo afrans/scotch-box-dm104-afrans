@@ -157,7 +157,9 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 	
 	$scope.setPedidos = function(pedidos) {
 		$scope.$apply();
-		$scope.pedidos = pedidos;
+		if (pedidos && pedidos !== '{"result":"Not matched"}') {
+			$scope.pedidos = pedidos;
+		}
 	};
 	
 }]);
