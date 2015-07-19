@@ -27,7 +27,7 @@ class Menu {
 						'</ul>'.
 						'<ul class="nav navbar-nav navbar-right">'.
 							'<li><a href="/#/cart"><span class="glyphicon glyphicon-shopping-cart textCart"></span>{{ cartMessage }}</a></li>'.
-							'<li><a href="/#/login">Entrar</a></li>'.
+							'<li><a href="/#/login">{{ user }}</a></li>'.
 						'</ul>'.
 					'</div>'.
 				'</div>'.

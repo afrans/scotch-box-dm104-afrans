@@ -9,12 +9,25 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 	$scope.displayMessageError = false;
 	$scope.displayMessage = false;
 	$scope.message = null;
+	$scope.usuario = null;
+	$scope.user = 'Entrar';
 
 	$scope.initListProduct = function() {
+		$scope.loadUserLogged();
 		$scope.loadCartFromSessionStorage();
 		
 		var marcaIdParameter = $scope.retrieveParameter();
 		ProductService.getProductList($scope.setProductList, marcaIdParameter);
+	};
+	
+	$scope.loadUserLogged = function() {
+		var usuario = sessionStorage.getItem('UsuarioLogado');
+		if (usuario && usuario != 'null') {
+			$scope.usuario = JSON.parse(usuario);
+			$scope.user = 'Olá ' + $scope.usuario.nome + " - Sair";
+		} else {
+			$scope.user = 'Entrar';	
+		}
 	};
 	
 	$scope.listMoreSolded = function() {
@@ -141,7 +154,7 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 		var now = new Date();
 		
 		var vendaObject = {
-			cliente_id: 5,
+			cliente_id: $scope.usuario.id,
 			data_venda: now.getTime()
 		};
 
@@ -180,7 +193,7 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 	};
 	
 	$scope.loadPedidos = function() {
-		VendaService.loadPedidos($scope.setPedidos, 5);
+		VendaService.loadPedidos($scope.setPedidos, $scope.usuario.id);
 	};
 	
 	$scope.setPedidos = function(pedidos) {

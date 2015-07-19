@@ -2,6 +2,8 @@
 <html lang="pt-br" ng-app="smartphoneStore">
 	<head>
 		<meta charset="utf-8">
+    	<meta http-equiv="Cache-Control" content="no-cache">
+    	<meta http-equiv="expires" content="Mon, 22 Jul 2002 11:12:01 GMT">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Smartphone Store</title>

@@ -1,4 +1,4 @@
-app.controller('CustomerController', ['$scope', '$location', 'CustomerService', function($scope, $location, CustomerService) {
+app.controller('CustomerController', ['$scope', '$location', '$window', 'CustomerService', function($scope, $location, $window, CustomerService) {
 	
 	$scope.nome = null;
 	$scope.sobreNome = null;
@@ -57,7 +57,7 @@ app.controller('CustomerController', ['$scope', '$location', 'CustomerService', 
 	$scope.afterSave = function(responseData) {
 		if (responseData && responseData.result === 'SUCCESS') {
 			$scope.$apply(function() {
-				$location.url('/cart');
+				$window.location.reload();
 			});
 			
 		} else {

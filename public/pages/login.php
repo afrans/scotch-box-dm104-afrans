@@ -1,4 +1,10 @@
-<div ng-controller="LoginController" class="col-md-6 col-sm-8 col-xs-12">
+<?php
+	if (isset($_GET['envio']) && $_GET['envio'] == 'login_errado') {
+		echo "<div class=\"alert alert-warning\" role=\"alert\"><p>Você precisa estar logado para acessar a página de carrinho!</p></div>";
+	}
+?>
+
+<div ng-controller="LoginController" ng-init="checkLogout()" class="col-md-6 col-sm-8 col-xs-12">
 	<form ng-submit="doLogin()" name="loginForm">
 		<fieldset>
 			<legend>Login</legend>
