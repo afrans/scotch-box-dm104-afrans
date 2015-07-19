@@ -23,6 +23,7 @@ class Menu {
 							'<li><a href="#marca/2">Samsung</a></li>'.
 							'<li><a href="#marca/3">LG</a></li>'.
 							'<li><a href="#marca/4">Microsoft</a></li>'.
+							'<li><a href="/#/mais_vendidos">Mais Vendidos</a></li>'.
 						'</ul>'.
 						'<ul class="nav navbar-nav navbar-right">'.
 							'<li><a href="/#/cart"><span class="glyphicon glyphicon-shopping-cart textCart"></span>{{ cartMessage }}</a></li>'.

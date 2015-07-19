@@ -20,6 +20,9 @@ app.config(['$routeProvider', function ($routeProvider) {
 			.when('/customer', {
 				templateUrl: 'pages/customer.php'
 			})
+			.when('/mais_vendidos', {
+				templateUrl: 'pages/maisVendidos.php'
+			})
 			.otherwise({
 				redirectTo: '/'
 			});

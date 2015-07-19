@@ -32,7 +32,7 @@ create table produto (
 create table venda (
 	id int not null primary key AUTO_INCREMENT,
 	cliente_id integer not null,
-	data_venda int not null,
+	data_venda bigint not null,
 	status_do_pedido varchar(50) not null default 'Pedido Realizado',
 	constraint cli_fk foreign key (cliente_id)
 	references cliente(id)

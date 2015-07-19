@@ -38,6 +38,22 @@ app.factory('ProductService', function() {
 		});
 	};
 	
+	service.getMoreSoldList = function(callBack) {
+		var apiUrl = 'api/sold_6';
+		
+		$.ajax({
+			type: 'GET',
+			contentType: 'application/json',
+			url: apiUrl,
+			success: function(responseData) {
+				callBack(responseData);
+			},
+			error: function() {
+				console.log('Error to retrieve products');
+			}
+		});
+	};
+	
 	return service;
 	
 });

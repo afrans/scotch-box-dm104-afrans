@@ -15,9 +15,26 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 		
 		var marcaIdParameter = $scope.retrieveParameter();
 		ProductService.getProductList($scope.setProductList, marcaIdParameter);
-		
-		$scope.displayMessage = false;
-		$scope.message = null;
+	};
+	
+	$scope.listMoreSolded = function() {
+		$scope.loadCartFromSessionStorage();
+		$scope.productList = [];
+		ProductService.getMoreSoldList($scope.callBackListMoreSolded);
+	};
+	
+	$scope.callBackListMoreSolded = function(listMoreSolded) {
+		if (listMoreSolded) {
+			for (var i = 0; i < listMoreSolded.length; i++) {
+				var product = listMoreSolded[i];
+				ProductService.getProductInformation($scope.addProductToList, product.produto_id);
+			}
+		}
+	};
+	
+	$scope.addProductToList = function(product) {
+		$scope.productList = $scope.productList.concat(product);
+		$scope.$apply();
 	};
 	
 	$scope.loadCartFromSessionStorage = function() {
@@ -28,7 +45,16 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 			$scope.cartItens = itensInSession;
 			$scope.updateBillingAccount();
 		}
+		
 		$scope.setCartMessage();
+		$scope.clearMessages();
+	};
+
+	$scope.clearMessages = function() {
+		$scope.messageError = null;
+		$scope.displayMessageError = false;
+		$scope.displayMessage = false;
+		$scope.message = null;
 	};
 	
 	$scope.retrieveParameter = function() {
@@ -138,12 +164,14 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 			$scope.clearChart();
 			$scope.displayMessage = true;		
 			$scope.message = 'Pedido Finalizado com sucesso!';
-			$scope.$apply();
+			$scope.loadPedidos();
 			
 		} else {
 			$scope.displayMessageError = true;
 			$scope.messageError = 'Erro ao finalizar o pedido. Por favor entre em contato com o administrador.';
 		}
+		
+		$scope.$apply();
 	};
 	
 	$scope.clearChart = function() {
@@ -156,9 +184,16 @@ app.controller('ProductListController', ['$location', '$scope', 'ProductService'
 	};
 	
 	$scope.setPedidos = function(pedidos) {
-		$scope.$apply();
 		if (pedidos && pedidos !== '{"result":"Not matched"}') {
+			
+			for (var i = 0; i < pedidos.length; i++) {
+				var pedido = pedidos[i];
+				var timestamp = parseInt(pedido.data_venda);
+				pedido.data_venda = new Date(timestamp);
+			}
+			
 			$scope.pedidos = pedidos;
+			$scope.$apply();
 		}
 	};
 	
